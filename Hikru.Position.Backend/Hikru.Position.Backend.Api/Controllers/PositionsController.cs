@@ -8,16 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hikru.Position.Backend.Api.Controllers
 {
 	[ApiController]
-	public class PositionController : HikruBaseController
+	[Route("api/[controller]")]
+	public class PositionsController : HikruBaseController
 	{
-		[HttpGet("api/positions")]
+		[HttpGet]
 		public async Task<IActionResult> GetPositions()
 		{
 			var result = await Mediator.Send(new GetPositionsQuery());
 			return Ok(result);
 		}
 
-		[HttpGet("api/positions/{id}")]
+		[HttpGet("{id}")]
 		public async Task<IActionResult> GetPosition([FromRoute] string id)
 		{
 			if (!Guid.TryParse(id, out var positionId))
@@ -29,14 +30,14 @@ namespace Hikru.Position.Backend.Api.Controllers
 			return Ok(result);
 		}
 
-		[HttpPost("api/positions")]
+		[HttpPost]
 		public async Task<IActionResult> CreatePosition([FromBody] CreatePositionCommand request)
 		{
 			var result = await Mediator.Send(request);
 			return Created("api/positions/" + result.PositionId, result);
 		}
 
-		[HttpPut("api/positions/{id}")]
+		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdatePosition([FromBody] UpdatePositionCommand request, [FromRoute] string id)
 		{
 			if (!Guid.TryParse(id, out var positionId))
@@ -49,7 +50,7 @@ namespace Hikru.Position.Backend.Api.Controllers
 			return Ok(result);
 		}
 
-		[HttpDelete("api/positions/{id}")]
+		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeletePosition([FromRoute] string id)
 		{
 			if (!Guid.TryParse(id, out var positionId))
