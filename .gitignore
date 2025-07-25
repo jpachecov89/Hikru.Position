@@ -1,0 +1,26 @@
+# Carpetas comunes a .NET
+**/bin/
+**/obj/
+**/TestResults/
+**/*.user
+**/*.suo
+
+# Carpeta de configuración de Visual Studio
+**/.vs/
+*.db
+*.vsidx
+*.vscode/
+
+# Logs y archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Archivos de compilación JS (para el futuro frontend)
+**/node_modules/
+**/dist/
+**/build/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
