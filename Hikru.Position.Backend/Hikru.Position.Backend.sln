@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hikru.Position.Backend.Api", "Hikru.Position.Backend.Api\Hikru.Position.Backend.Api.csproj", "{9A546B77-D41C-43E9-8234-DE1297D4C53E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hikru.Position.Backend.Domain", "Hikru.Position.Backend.Domain\Hikru.Position.Backend.Domain.csproj", "{F6A861EA-7D6F-4CF2-A4A1-8722BD9BD886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hikru.Position.Backend.Application", "Hikru.Position.Backend.Application\Hikru.Position.Backend.Application.csproj", "{6BCAB661-73AB-4085-8D8A-DCE64F257D40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hikru.Position.Backend.Infrastructure", "Hikru.Position.Backend.Infrastructure\Hikru.Position.Backend.Infrastructure.csproj", "{D580E146-CDF9-4FBE-9602-30146B783D5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{9A546B77-D41C-43E9-8234-DE1297D4C53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A546B77-D41C-43E9-8234-DE1297D4C53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A546B77-D41C-43E9-8234-DE1297D4C53E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A861EA-7D6F-4CF2-A4A1-8722BD9BD886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A861EA-7D6F-4CF2-A4A1-8722BD9BD886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A861EA-7D6F-4CF2-A4A1-8722BD9BD886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A861EA-7D6F-4CF2-A4A1-8722BD9BD886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BCAB661-73AB-4085-8D8A-DCE64F257D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BCAB661-73AB-4085-8D8A-DCE64F257D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BCAB661-73AB-4085-8D8A-DCE64F257D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BCAB661-73AB-4085-8D8A-DCE64F257D40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D580E146-CDF9-4FBE-9602-30146B783D5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D580E146-CDF9-4FBE-9602-30146B783D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D580E146-CDF9-4FBE-9602-30146B783D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D580E146-CDF9-4FBE-9602-30146B783D5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
