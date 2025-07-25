@@ -33,11 +33,11 @@ jobs:
       - name: Build
         run: dotnet build Hikru.Position.Backend/Hikru.Position.Backend.sln --configuration Release --no-restore
 
-      - name: List published files (debug)
-        run: find publish -type f
-
       - name: Publish API Project
         run: dotnet publish Hikru.Position.Backend/Hikru.Position.Backend.Api/Hikru.Position.Backend.Api.csproj --configuration Release --output publish --runtime linux-x64 --self-contained false
+
+      - name: List published files (debug)
+        run: find publish -type f
 
       - name: List publish output (debug)
         run: ls -R publish
