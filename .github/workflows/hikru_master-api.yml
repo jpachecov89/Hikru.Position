@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - hikru-api
+name: Build, Test and Deploy ASP.Net Core App to Azure Web App - hikru-api
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build-test-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -30,36 +30,33 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore Hikru.Position.Backend/Hikru.Position.Backend.sln
 
-      - name: Build
+      - name: Build solution
         run: dotnet build Hikru.Position.Backend/Hikru.Position.Backend.sln --configuration Release --no-restore
 
-      - name: Publish API Project
+      - name: Run unit tests
+        run: dotnet test Hikru.Position.Backend/Hikru.Position.Backend.UnitTests/Hikru.Position.Backend.UnitTests.csproj --configuration Release --no-build --verbosity normal
+
+      - name: Publish API project
         run: dotnet publish Hikru.Position.Backend/Hikru.Position.Backend.Api/Hikru.Position.Backend.Api.csproj --configuration Release --output publish --runtime linux-x64 --self-contained false
-
-      - name: List published files (debug)
-        run: find publish -type f
-
-      - name: List publish output (debug)
-        run: ls -R publish
 
       - name: Upload publish artifact
         uses: actions/upload-artifact@v4
         with:
           name: dotnet-app
           path: publish
-      
+
       - name: Download publish artifact
         uses: actions/download-artifact@v4
         with:
           name: dotnet-app
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_18A59C2606674F48A1320553431D694C }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_3E20F5F5F0AA4B6F86B12BC6F075C4AE }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B8891ADB3AD649A09309E4A4CBC5019C }}
-          
+
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
