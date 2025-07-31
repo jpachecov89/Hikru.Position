@@ -90,43 +90,43 @@ namespace Hikru.Position.Backend.Infrastructure.Persistence.Contexts
 				entity.HasData(
 					new Department
 					{
-						Id = Guid.Parse("a1a11111-aaaa-4111-aaaa-1111a1a1a1a1"),
+						Id = Guid.Parse("7A79F0C2-F8FD-4A59-BA0C-5096FE7B81FE"),
 						Name = "Engineering",
 						Description = "Responsible for software development, architecture and technical innovation."
 					},
 					new Department
 					{
-						Id = Guid.Parse("b2b22222-bbbb-4222-bbbb-2222b2b2b2b2"),
+						Id = Guid.Parse("9A3BA9C6-2549-485E-B111-4A0FFC60C19A"),
 						Name = "Marketing",
 						Description = "Handles branding, digital campaigns, and market research."
 					},
 					new Department
 					{
-						Id = Guid.Parse("c3c33333-cccc-4333-cccc-3333c3c3c3c3"),
+						Id = Guid.Parse("9F45C02F-DFE2-476D-9FFB-4FDA843E8181"),
 						Name = "Sales",
 						Description = "Manages client relationships and drives revenue growth."
 					},
 					new Department
 					{
-						Id = Guid.Parse("d4d44444-dddd-4444-dddd-4444d4d4d4d4"),
+						Id = Guid.Parse("FF722DD0-1FAC-4B5F-8D07-77E43D82FE1F"),
 						Name = "Human Resources",
 						Description = "Oversees recruitment, employee well-being and internal policies."
 					},
 					new Department
 					{
-						Id = Guid.Parse("e5e55555-eeee-4555-eeee-5555e5e5e5e5"),
+						Id = Guid.Parse("3D2897ED-1B11-4F99-B26A-92A3BAEA5A79"),
 						Name = "Finance",
 						Description = "Controls budgeting, accounting, and financial reporting."
 					},
 					new Department
 					{
-						Id = Guid.Parse("f6f66666-ffff-4666-ffff-6666f6f6f6f6"),
+						Id = Guid.Parse("9BB98DBD-1B21-494A-A9A5-6B7E3967A5DC"),
 						Name = "Product",
 						Description = "Leads product vision, roadmap and customer experience."
 					},
 					new Department
 					{
-						Id = Guid.Parse("a9a99999-a9a9-4999-a9a9-9999a9a9a9a9"),
+						Id = Guid.Parse("510A002E-510A-490C-8433-0808BC0215B3"),
 						Name = "Customer Success",
 						Description = "Supports clients post-sale and ensures their satisfaction and retention."
 					}
@@ -137,89 +137,82 @@ namespace Hikru.Position.Backend.Infrastructure.Persistence.Contexts
 			{
 				entity.HasData(
 					new Domain.Entities.Position
-					{
-						Id = Guid.Parse("10101010-aaaa-4aaa-aaaa-aaaaaaaaaaaa"),
-						Title = "Senior .NET Developer",
-						Description = "Responsable del desarrollo de servicios backend usando .NET 8 y Azure Functions.",
-						Location = "Lima, Perú",
-						Status = PositionStatus.Open,
-						RecruiterId = Guid.Parse("a1e0a0f3-11a2-4eaa-8bfb-1b4b1f98a111"),
-						DepartmentId = Guid.Parse("a1a11111-aaaa-4111-aaaa-1111a1a1a1a1"),
-						Budget = 110000,
-						ClosingDate = new DateTime(2025, 8, 15)
-					},
+					(
+						"Senior .NET Developer",
+						"Responsible for the development of backend services using .NET 8 and Azure Functions.",
+						"Lima, Perú",
+						PositionStatus.Open,
+						Guid.Parse("a1e0a0f3-11a2-4eaa-8bfb-1b4b1f98a111"),
+						Guid.Parse("7A79F0C2-F8FD-4A59-BA0C-5096FE7B81FE"),
+						110000,
+						new DateTime(2025, 8, 15)
+					),
 					new Domain.Entities.Position
-					{
-						Id = Guid.Parse("20202020-bbbb-4bbb-bbbb-bbbbbbbbbbbb"),
-						Title = "UX Designer",
-						Description = "Diseño de interfaces centradas en el usuario para la nueva plataforma SaaS.",
-						Location = "Remoto - LatAm",
-						Status = PositionStatus.Open,
-						RecruiterId = Guid.Parse("b2c1b1e4-22b3-4fbb-9cfc-2c5c2f09b222"),
-						DepartmentId = Guid.Parse("f6f66666-ffff-4666-ffff-6666f6f6f6f6"),
-						Budget = 85000,
-						ClosingDate = new DateTime(2025, 8, 30)
-					},
+					(
+						"UX Designer",
+						"Designing user-centric interfaces for the new SaaS platform.",
+						"Remote - LatAm",
+						PositionStatus.Open,
+						Guid.Parse("b2c1b1e4-22b3-4fbb-9cfc-2c5c2f09b222"),
+						Guid.Parse("9BB98DBD-1B21-494A-A9A5-6B7E3967A5DC"),
+						85000,
+						new DateTime(2025, 8, 30)
+					),
 					new Domain.Entities.Position
-					{
-						Id = Guid.Parse("30303030-cccc-4ccc-cccc-cccccccccccc"),
-						Title = "Digital Marketing Analyst",
-						Description = "Optimización de campañas en Google Ads, SEO y analítica web.",
-						Location = "Santiago, Chile",
-						Status = PositionStatus.Draft,
-						RecruiterId = Guid.Parse("c3d2c2f5-33c4-4bcc-adfd-3d6d3a10c333"),
-						DepartmentId = Guid.Parse("b2b22222-bbbb-4222-bbbb-2222b2b2b2b2"),
-						Budget = 65000,
-						ClosingDate = null
-					},
+					(
+						"Digital Marketing Analyst",
+						"Google Ads campaign optimization, SEO, and web analytics.",
+						"Santiago, Chile",
+						PositionStatus.Draft,
+						Guid.Parse("c3d2c2f5-33c4-4bcc-adfd-3d6d3a10c333"),
+						Guid.Parse("9A3BA9C6-2549-485E-B111-4A0FFC60C19A"),
+						65000,
+						null
+					),
 					new Domain.Entities.Position
-					{
-						Id = Guid.Parse("40404040-dddd-4ddd-dddd-dddddddddddd"),
-						Title = "Junior Frontend Developer",
-						Description = "Desarrollo de interfaces en React y TypeScript. Ideal para primeros trabajos.",
-						Location = "Buenos Aires, Argentina",
-						Status = PositionStatus.Open,
-						RecruiterId = Guid.Parse("b7f6f6b9-77f8-4bff-bfef-7f0f7a54b777"),
-						DepartmentId = Guid.Parse("a1a11111-aaaa-4111-aaaa-1111a1a1a1a1"),
-						Budget = 48000,
-						ClosingDate = new DateTime(2025, 9, 10)
-					},
+					(
+						"Junior Frontend Developer",
+						"Interface development in React and TypeScript. Ideal for beginners.",
+						"Buenos Aires, Argentina",
+						PositionStatus.Open,
+						Guid.Parse("b7f6f6b9-77f8-4bff-bfef-7f0f7a54b777"),
+						Guid.Parse("7A79F0C2-F8FD-4A59-BA0C-5096FE7B81FE"),
+						48000,
+						new DateTime(2025, 9, 10)
+					),
 					new Domain.Entities.Position
-					{
-						Id = Guid.Parse("50505050-eeee-4eee-eeee-eeeeeeeeeeee"),
-						Title = "Accounting Specialist",
-						Description = "Gestión contable, conciliaciones y reportes mensuales.",
-						Location = "Lima, Perú",
-						Status = PositionStatus.Closed,
-						RecruiterId = Guid.Parse("f6f5f5a8-66f7-4aff-dfef-6f9f6a43f666"),
-						DepartmentId = Guid.Parse("e5e55555-eeee-4555-eeee-5555e5e5e5e5"),
-						Budget = 72000,
-						ClosingDate = new DateTime(2025, 7, 10)
-					},
+					(
+						"Accounting Specialist",
+						"Accounting management, reconciliations and monthly reports.",
+						"Lima, Perú",
+						PositionStatus.Closed,
+						Guid.Parse("f6f5f5a8-66f7-4aff-dfef-6f9f6a43f666"),
+						Guid.Parse("3D2897ED-1B11-4F99-B26A-92A3BAEA5A79"),
+						72000,
+						new DateTime(2025, 7, 10)
+					),
 					new Domain.Entities.Position
-					{
-						Id = Guid.Parse("60606060-ffff-4fff-ffff-ffffffffffff"),
-						Title = "HR Business Partner",
-						Description = "Gestión del talento, desarrollo organizacional y clima laboral.",
-						Location = "Quito, Ecuador",
-						Status = PositionStatus.Archived,
-						RecruiterId = Guid.Parse("d4e3d3b6-44d5-4bdd-bece-4e7e4a21d444"),
-						DepartmentId = Guid.Parse("d4d44444-dddd-4444-dddd-4444d4d4d4d4"),
-						Budget = 90000,
-						ClosingDate = new DateTime(2024, 12, 15)
-					},
+					(
+						"HR Business Partner",
+						"Talent management, organizational development and work environment.",
+						"Quito, Ecuador",
+						PositionStatus.Archived,
+						Guid.Parse("d4e3d3b6-44d5-4bdd-bece-4e7e4a21d444"),
+						Guid.Parse("FF722DD0-1FAC-4B5F-8D07-77E43D82FE1F"),
+						90000,
+						new DateTime(2024, 12, 15)
+					),
 					new Domain.Entities.Position
-					{
-						Id = Guid.Parse("70707070-aaaa-4aaa-bbbb-bbbbbbaaaaaa"),
-						Title = "Sales Executive B2B",
-						Description = "Venta de software corporativo a clientes grandes en LatAm.",
-						Location = "Remoto - Colombia",
-						Status = PositionStatus.Open,
-						RecruiterId = Guid.Parse("e5f4e4a7-55e6-4dee-cafe-5f8f5a32e555"),
-						DepartmentId = Guid.Parse("c3c33333-cccc-4333-cccc-3333c3c3c3c3"),
-						Budget = 100000,
-						ClosingDate = null
-					}
+					(
+						"Sales Executive B2B",
+						"Sales of corporate software to large clients in Latin America.",
+						"Remote - LatAm",
+						PositionStatus.Open,
+						Guid.Parse("e5f4e4a7-55e6-4dee-cafe-5f8f5a32e555"),
+						Guid.Parse("9F45C02F-DFE2-476D-9FFB-4FDA843E8181"),
+						100000,
+						null
+					)
 				);
 			});
 

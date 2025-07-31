@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hikru.Position.Backend.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250725060024_UpdatePositionTable")]
-    partial class UpdatePositionTable
+    [Migration("20250730164211_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,43 +46,43 @@ namespace Hikru.Position.Backend.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a1a11111-aaaa-4111-aaaa-1111a1a1a1a1"),
+                            Id = new Guid("7a79f0c2-f8fd-4a59-ba0c-5096fe7b81fe"),
                             Description = "Responsible for software development, architecture and technical innovation.",
                             Name = "Engineering"
                         },
                         new
                         {
-                            Id = new Guid("b2b22222-bbbb-4222-bbbb-2222b2b2b2b2"),
+                            Id = new Guid("9a3ba9c6-2549-485e-b111-4a0ffc60c19a"),
                             Description = "Handles branding, digital campaigns, and market research.",
                             Name = "Marketing"
                         },
                         new
                         {
-                            Id = new Guid("c3c33333-cccc-4333-cccc-3333c3c3c3c3"),
+                            Id = new Guid("9f45c02f-dfe2-476d-9ffb-4fda843e8181"),
                             Description = "Manages client relationships and drives revenue growth.",
                             Name = "Sales"
                         },
                         new
                         {
-                            Id = new Guid("d4d44444-dddd-4444-dddd-4444d4d4d4d4"),
+                            Id = new Guid("ff722dd0-1fac-4b5f-8d07-77e43d82fe1f"),
                             Description = "Oversees recruitment, employee well-being and internal policies.",
                             Name = "Human Resources"
                         },
                         new
                         {
-                            Id = new Guid("e5e55555-eeee-4555-eeee-5555e5e5e5e5"),
+                            Id = new Guid("3d2897ed-1b11-4f99-b26a-92a3baea5a79"),
                             Description = "Controls budgeting, accounting, and financial reporting.",
                             Name = "Finance"
                         },
                         new
                         {
-                            Id = new Guid("f6f66666-ffff-4666-ffff-6666f6f6f6f6"),
+                            Id = new Guid("9bb98dbd-1b21-494a-a9a5-6b7e3967a5dc"),
                             Description = "Leads product vision, roadmap and customer experience.",
                             Name = "Product"
                         },
                         new
                         {
-                            Id = new Guid("a9a99999-a9a9-4999-a9a9-9999a9a9a9a9"),
+                            Id = new Guid("510a002e-510a-490c-8433-0808bc0215b3"),
                             Description = "Supports clients post-sale and ensures their satisfaction and retention.",
                             Name = "Customer Success"
                         });
@@ -134,11 +134,11 @@ namespace Hikru.Position.Backend.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("10101010-aaaa-4aaa-aaaa-aaaaaaaaaaaa"),
+                            Id = new Guid("e1b61dfb-9e82-4bf9-9a68-f86ee8db7031"),
                             Budget = 110000.0,
                             ClosingDate = new DateTime(2025, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartmentId = new Guid("a1a11111-aaaa-4111-aaaa-1111a1a1a1a1"),
-                            Description = "Responsable del desarrollo de servicios backend usando .NET 8 y Azure Functions.",
+                            DepartmentId = new Guid("7a79f0c2-f8fd-4a59-ba0c-5096fe7b81fe"),
+                            Description = "Responsible for the development of backend services using .NET 8 and Azure Functions.",
                             Location = "Lima, Perú",
                             RecruiterId = new Guid("a1e0a0f3-11a2-4eaa-8bfb-1b4b1f98a111"),
                             Status = 1,
@@ -146,22 +146,22 @@ namespace Hikru.Position.Backend.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("20202020-bbbb-4bbb-bbbb-bbbbbbbbbbbb"),
+                            Id = new Guid("c965a79b-e096-43ee-acea-7a2f71450dc9"),
                             Budget = 85000.0,
                             ClosingDate = new DateTime(2025, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartmentId = new Guid("f6f66666-ffff-4666-ffff-6666f6f6f6f6"),
-                            Description = "Diseño de interfaces centradas en el usuario para la nueva plataforma SaaS.",
-                            Location = "Remoto - LatAm",
+                            DepartmentId = new Guid("9bb98dbd-1b21-494a-a9a5-6b7e3967a5dc"),
+                            Description = "Designing user-centric interfaces for the new SaaS platform.",
+                            Location = "Remote - LatAm",
                             RecruiterId = new Guid("b2c1b1e4-22b3-4fbb-9cfc-2c5c2f09b222"),
                             Status = 1,
                             Title = "UX Designer"
                         },
                         new
                         {
-                            Id = new Guid("30303030-cccc-4ccc-cccc-cccccccccccc"),
+                            Id = new Guid("15ef6e40-eb52-4b68-8bf6-b9872fda2db9"),
                             Budget = 65000.0,
-                            DepartmentId = new Guid("b2b22222-bbbb-4222-bbbb-2222b2b2b2b2"),
-                            Description = "Optimización de campañas en Google Ads, SEO y analítica web.",
+                            DepartmentId = new Guid("9a3ba9c6-2549-485e-b111-4a0ffc60c19a"),
+                            Description = "Google Ads campaign optimization, SEO, and web analytics.",
                             Location = "Santiago, Chile",
                             RecruiterId = new Guid("c3d2c2f5-33c4-4bcc-adfd-3d6d3a10c333"),
                             Status = 0,
@@ -169,11 +169,11 @@ namespace Hikru.Position.Backend.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("40404040-dddd-4ddd-dddd-dddddddddddd"),
+                            Id = new Guid("0a019559-4cbd-4828-bed9-a2879b74378f"),
                             Budget = 48000.0,
                             ClosingDate = new DateTime(2025, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartmentId = new Guid("a1a11111-aaaa-4111-aaaa-1111a1a1a1a1"),
-                            Description = "Desarrollo de interfaces en React y TypeScript. Ideal para primeros trabajos.",
+                            DepartmentId = new Guid("7a79f0c2-f8fd-4a59-ba0c-5096fe7b81fe"),
+                            Description = "Interface development in React and TypeScript. Ideal for beginners.",
                             Location = "Buenos Aires, Argentina",
                             RecruiterId = new Guid("b7f6f6b9-77f8-4bff-bfef-7f0f7a54b777"),
                             Status = 1,
@@ -181,11 +181,11 @@ namespace Hikru.Position.Backend.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("50505050-eeee-4eee-eeee-eeeeeeeeeeee"),
+                            Id = new Guid("74727422-18ea-4b75-b3c8-389e8fceb14a"),
                             Budget = 72000.0,
                             ClosingDate = new DateTime(2025, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartmentId = new Guid("e5e55555-eeee-4555-eeee-5555e5e5e5e5"),
-                            Description = "Gestión contable, conciliaciones y reportes mensuales.",
+                            DepartmentId = new Guid("3d2897ed-1b11-4f99-b26a-92a3baea5a79"),
+                            Description = "Accounting management, reconciliations and monthly reports.",
                             Location = "Lima, Perú",
                             RecruiterId = new Guid("f6f5f5a8-66f7-4aff-dfef-6f9f6a43f666"),
                             Status = 2,
@@ -193,11 +193,11 @@ namespace Hikru.Position.Backend.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("60606060-ffff-4fff-ffff-ffffffffffff"),
+                            Id = new Guid("4a508dcd-3ca8-4b4c-a53c-bae0a5c4f917"),
                             Budget = 90000.0,
                             ClosingDate = new DateTime(2024, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DepartmentId = new Guid("d4d44444-dddd-4444-dddd-4444d4d4d4d4"),
-                            Description = "Gestión del talento, desarrollo organizacional y clima laboral.",
+                            DepartmentId = new Guid("ff722dd0-1fac-4b5f-8d07-77e43d82fe1f"),
+                            Description = "Talent management, organizational development and work environment.",
                             Location = "Quito, Ecuador",
                             RecruiterId = new Guid("d4e3d3b6-44d5-4bdd-bece-4e7e4a21d444"),
                             Status = 3,
@@ -205,11 +205,11 @@ namespace Hikru.Position.Backend.Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("70707070-aaaa-4aaa-bbbb-bbbbbbaaaaaa"),
+                            Id = new Guid("932b6617-9fff-456b-8713-73cc5a3312d8"),
                             Budget = 100000.0,
-                            DepartmentId = new Guid("c3c33333-cccc-4333-cccc-3333c3c3c3c3"),
-                            Description = "Venta de software corporativo a clientes grandes en LatAm.",
-                            Location = "Remoto - Colombia",
+                            DepartmentId = new Guid("9f45c02f-dfe2-476d-9ffb-4fda843e8181"),
+                            Description = "Sales of corporate software to large clients in Latin America.",
+                            Location = "Remote - LatAm",
                             RecruiterId = new Guid("e5f4e4a7-55e6-4dee-cafe-5f8f5a32e555"),
                             Status = 1,
                             Title = "Sales Executive B2B"

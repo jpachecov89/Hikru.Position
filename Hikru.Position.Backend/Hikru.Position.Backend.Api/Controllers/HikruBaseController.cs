@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hikru.Position.Backend.Api.Controllers
 {
-	[ApiController]
 	public class HikruBaseController : ControllerBase
 	{
 		private IMediator _mediator;

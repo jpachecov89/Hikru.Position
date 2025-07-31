@@ -1,4 +1,5 @@
-﻿using Hikru.Position.Backend.Application.Interfaces.Persistence;
+﻿using Hikru.Position.Backend.Application.Exceptions;
+using Hikru.Position.Backend.Application.Interfaces.Persistence;
 using MediatR;
 
 namespace Hikru.Position.Backend.Application.Positions.Commands.CreatePosition
@@ -14,23 +15,34 @@ namespace Hikru.Position.Backend.Application.Positions.Commands.CreatePosition
 
 		public async Task<CreatePositionResult> Handle(CreatePositionCommand request, CancellationToken cancellationToken)
 		{
+			if (string.IsNullOrWhiteSpace(request.Title))
+				throw new BadRequestException("Title cannot be empty. Review again");
+			if (string.IsNullOrWhiteSpace(request.Description))
+				throw new BadRequestException("Description cannot be empty. Review again");
+			if (string.IsNullOrWhiteSpace(request.Location))
+				throw new BadRequestException("Location cannot be empty. Review again");
+			if (request.Budget <= 0)
+				throw new BadRequestException("Invalid amount for Budget. Review again");
+
 			var position = new Domain.Entities.Position
-			{
-				Id = Guid.NewGuid(),
-				Title = request.Title,
-				Description = request.Description,
-				Location = request.Location,
-				Status = request.Status,
-				RecruiterId = request.RecruiterId,
-				DepartmentId = request.DepartmentId,
-				Budget = request.Budget,
-				ClosingDate = request.ClosingDate
-			};
+			(
+				request.Title,
+				request.Description,
+				request.Location,
+				request.Status,
+				request.RecruiterId,
+				request.DepartmentId,
+				request.Budget,
+				request.ClosingDate
+			);
 
 			await _uow.Positions.AddAsync(position);
 			await _uow.SaveChangesAsync();
 
 			var result = await _uow.Positions.GetByIdAsync(position.Id);
+
+			if (result == null)
+				throw new BadRequestException("Position cannot be created. Review again");
 
 			return new CreatePositionResult
 			{

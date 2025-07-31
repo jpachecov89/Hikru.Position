@@ -1,4 +1,5 @@
-﻿using Hikru.Position.Backend.Application.Positions.Commands.CreatePosition;
+﻿using Hikru.Position.Backend.Application.Exceptions;
+using Hikru.Position.Backend.Application.Positions.Commands.CreatePosition;
 using Hikru.Position.Backend.Application.Positions.Commands.DeletePosition;
 using Hikru.Position.Backend.Application.Positions.Commands.UpdatePosition;
 using Hikru.Position.Backend.Application.Positions.Queries.GetPosition;
@@ -22,9 +23,7 @@ namespace Hikru.Position.Backend.Api.Controllers
 		public async Task<IActionResult> GetPosition([FromRoute] string id)
 		{
 			if (!Guid.TryParse(id, out var positionId))
-			{
-				return BadRequest();
-			}
+				throw new BadRequestException($"Id: '{id}' is not a correct Guid");
 
 			var result = await Mediator.Send(new GetPositionQuery { PositionId = positionId });
 			return Ok(result);
@@ -41,9 +40,7 @@ namespace Hikru.Position.Backend.Api.Controllers
 		public async Task<IActionResult> UpdatePosition([FromBody] UpdatePositionCommand request, [FromRoute] string id)
 		{
 			if (!Guid.TryParse(id, out var positionId))
-			{
-				return BadRequest();
-			}
+				throw new BadRequestException($"Id: '{id}' is not a correct Guid");
 
 			request.PositionId = positionId;
 			var result = await Mediator.Send(request);
@@ -54,9 +51,7 @@ namespace Hikru.Position.Backend.Api.Controllers
 		public async Task<IActionResult> DeletePosition([FromRoute] string id)
 		{
 			if (!Guid.TryParse(id, out var positionId))
-			{
-				return BadRequest();
-			}
+				throw new BadRequestException($"Id: '{id}' is not a correct Guid");
 
 			var result = await Mediator.Send(new DeletePositionCommand { PositionId = positionId });
 			return NoContent();

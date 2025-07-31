@@ -1,4 +1,5 @@
-﻿using Hikru.Position.Backend.Application.Interfaces.Persistence;
+﻿using Hikru.Position.Backend.Application.Exceptions;
+using Hikru.Position.Backend.Application.Interfaces.Persistence;
 using MediatR;
 
 namespace Hikru.Position.Backend.Application.Positions.Queries.GetPosition
@@ -15,6 +16,10 @@ namespace Hikru.Position.Backend.Application.Positions.Queries.GetPosition
 		public async Task<GetPositionResult> Handle(GetPositionQuery request, CancellationToken cancellationToken)
 		{
 			var result = await _uow.Positions.GetByIdAsync(request.PositionId);
+
+			if (result == null)
+				throw new NotFoundException($"Position not found for Id: {request.PositionId}");
+
 			return new GetPositionResult
 			{
 				PositionId = result.Id,

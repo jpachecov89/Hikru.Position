@@ -16,5 +16,26 @@ namespace Hikru.Position.Backend.Domain.Entities
 
 		public Recruiter Recruiter { get; set; } = null!;
 		public Department Department { get; set; } = null!;
+
+		public Position(
+			string title,
+			string description,
+			string location,
+			PositionStatus status,
+			Guid recruiterId,
+			Guid departmentId,
+			double budget,
+			DateTime? closingDate)
+		{
+			Id = Guid.NewGuid();
+			Title = title;
+			Description = description;
+			Location = location;
+			Status = status;
+			RecruiterId = recruiterId;
+			DepartmentId = departmentId;
+			Budget = budget;
+			ClosingDate = closingDate;
+		}
 	}
 }

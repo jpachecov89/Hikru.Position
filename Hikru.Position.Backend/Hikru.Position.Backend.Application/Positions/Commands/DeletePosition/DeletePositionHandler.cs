@@ -1,4 +1,5 @@
-﻿using Hikru.Position.Backend.Application.Interfaces.Persistence;
+﻿using Hikru.Position.Backend.Application.Exceptions;
+using Hikru.Position.Backend.Application.Interfaces.Persistence;
 using MediatR;
 
 namespace Hikru.Position.Backend.Application.Positions.Commands.DeletePosition
@@ -15,6 +16,9 @@ namespace Hikru.Position.Backend.Application.Positions.Commands.DeletePosition
 		public async Task<DeletePositionResult> Handle(DeletePositionCommand request, CancellationToken cancellationToken)
 		{
 			var position = await _uow.Positions.GetByIdAsync(request.PositionId);
+
+			if (position == null)
+				throw new NotFoundException($"Position not found for Id: {request.PositionId}");
 
 			_uow.Positions.Delete(position);
 			await _uow.SaveChangesAsync();
