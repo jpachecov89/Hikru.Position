@@ -63,8 +63,17 @@ namespace Hikru.Position.Backend.Api
 
 			var app = builder.Build();
 
+			app.UseCors(c => c
+			.WithOrigins("https://localhost:3000", "https://agreeable-rock-05d508c1e.1.azurestaticapps.net")
+			.AllowAnyMethod()
+			.AllowAnyHeader()
+			.AllowCredentials()
+			.WithExposedHeaders("location")
+			.WithExposedHeaders("content-disposition")
+			);
+
 			// Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+			if (app.Environment.IsDevelopment())
             {
 				app.UseSwagger();
 				app.UseSwaggerUI();
