@@ -18,14 +18,14 @@ This project is the backend portion of the Full Stack Lead technical assessment,
 
 Base service URL: `https://hikru-api-cdgga0g0cxdvg0e6.centralus-01.azurewebsites.net`
 
-(GET) /api/positions: Retrieve all job positions
-(GET) /api/positions/{id}: Retrieve position details by ID
-(POST) /api/positions: Create a new position
-(PUT) /api/positions/{id}: Update an existing position
-(DELETE) /api/positions/{id}: Delete a position
-(POST) /api/auth/login: Basic login with JWT token
-(GET) /api/recruiters: Retrieve all recruiters
-(GET) /api/departments: Retrieve all departments
+- (GET) /api/positions: Retrieve all job positions
+- (GET) /api/positions/{id}: Retrieve position details by ID
+- (POST) /api/positions: Create a new position
+- (PUT) /api/positions/{id}: Update an existing position
+- (DELETE) /api/positions/{id}: Delete a position
+- (POST) /api/auth/login: Basic login with JWT token
+- (GET) /api/recruiters: Retrieve all recruiters
+- (GET) /api/departments: Retrieve all departments
 
 
 ## Data Model
