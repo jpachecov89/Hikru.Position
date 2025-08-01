@@ -14,6 +14,13 @@ This project is the backend portion of the Full Stack Lead technical assessment,
 - GitHub Actions for CI/CD pipeline
 - Automated deployment to Azure Web App
 
+## Test User Credentials
+
+To test JWT-protected endpoints using Swagger or log into the frontend demo, use the following credentials:
+
+- **Username**: `admin`
+- **Password**: `admin`
+
 ## Available Endpoints
 
 Base service URL: `https://hikru-api-cdgga0g0cxdvg0e6.centralus-01.azurewebsites.net`
@@ -26,7 +33,6 @@ Base service URL: `https://hikru-api-cdgga0g0cxdvg0e6.centralus-01.azurewebsites
 - (POST) /api/auth/login: Basic login with JWT token
 - (GET) /api/recruiters: Retrieve all recruiters
 - (GET) /api/departments: Retrieve all departments
-
 
 ## Data Model
 
@@ -99,8 +105,99 @@ https://hikru-api-cdgga0g0cxdvg0e6.centralus-01.azurewebsites.net
 
 You can consume the endpoints from any HTTP client or connected frontend.
 
+---
+
+# Hikru.Position.Frontend – React SPA
+
+This is the frontend portion of the Full Stack Lead technical assessment, developed with **React**, **TypeScript**, and modern UI practices. It consumes the backend API hosted in Azure and provides a clean, responsive user interface for managing job positions.
+
+## Live Demo
+
+Access the deployed demo here:
+
+```
+https://agreeable-rock-05d508c1e.1.azurestaticapps.net/
+```
+
+> Use the same test credentials:
+> - **Username**: `admin`
+> - **Password**: `admin`
+
+The frontend connects to the backend API and Azure SQL Database in real-time, providing full functionality.
+
+## Implemented Features
+
+- React + TypeScript
+- Routing with React Router
+- Reusable UI components and modular structure
+- Authentication with JWT
+- Protected routes for logged-in users
+- Position listing in table format
+- Position creation and editing forms
+- Connection to Azure backend and database
+- Responsive layout with CSS customization
+
+## Folder Overview
+
+The frontend project is kept pretty straightforward:
+
+- `components/` → reusable UI pieces (like headers, inputs, tables...)
+- `pages/` → actual screens like the home page, login, and position form
+- `services/` → all the API logic using Axios
+- `enums/` and `types/` → for cleaner code and better typing
+- `App.tsx` handles the routes
+- `index.tsx` is the main entry point
+- `app.css` holds all global styles
+
+No frameworks like Tailwind or UI kits were used — just vanilla CSS for full control.
+
+## How to Run Locally
+
+1. Make sure Node.js (v18+) and npm are installed.
+
+2. In the root frontend directory, run:
+
+```bash
+npm install
+npm run dev
+```
+
+3. Open your browser and navigate to `http://localhost:5173`
+
+## Authentication
+
+Upon login with valid credentials, a JWT is stored in local storage and used in all subsequent API requests.
+
+The token is automatically included in protected routes, and unauthorized access redirects users to the login page.
+
+## Styling and Layout
+
+The project uses a custom CSS file (`app.css`) for global styling and layout enhancements.
+
+Position data is displayed in a table format, including the following fields:
+
+- Title
+- Description
+- Location
+- Status (as readable text)
+- Recruiter
+- Department
+- Budget
+- Closing Date (if available)
+
+Each row includes Edit and Delete buttons for CRUD operations.
+
+## Deployment
+
+The React app is deployed to **Azure Static Web Apps**.
+
+- CI/CD is handled through GitHub Actions on `main` branch commits.
+- Backend and frontend are fully integrated via environment configurations.
+
 ## Final Notes
 
-This backend was built with a focus on maintainability, separation of concerns, and test coverage. All requirements from the technical assessment have been implemented, except for integration testing, which was left out due to time constraints.
+This frontend was built with attention to usability, state handling, and responsiveness. It mirrors the backend structure to provide a cohesive full-stack experience.
+
+The application is ready for further enhancements, such as form validations, notifications, and role-based access if required in future iterations.
 
 For any questions or technical details, feel free to contact the developer of this solution.
