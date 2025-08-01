@@ -43,14 +43,12 @@ const PositionForm: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
-      ...prev,
-      [name]: name === 'budget' ? Number(value) : value
-        ? Number(value)
-        : name === 'closingDate' && value === ''
-        ? null
-        : name === 'status'
-        ? parseInt(value)
-        : value
+        ...prev,
+        [name]:
+        name === 'budget' ? Number(value) :
+        name === 'status' ? parseInt(value) :
+        name === 'closingDate' && value === '' ? null :
+        value
     }));
   };
 
