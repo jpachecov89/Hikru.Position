@@ -75,7 +75,7 @@ const PositionList: React.FC = () => {
               <td>{position.closingDate ? new Date(position.closingDate).toLocaleDateString() : '—'}</td>
               <td>
                 <div className="action-buttons">
-                  <button className="edit-button">Edit</button>
+                  <button className="edit-button" onClick={() => navigate(`/positions/edit/${position.positionId}`)}>Edit</button>
                   <button className="delete-button" onClick={() => handleDeleteRequest(position.positionId)}>Delete</button>
                 </div>
               </td>

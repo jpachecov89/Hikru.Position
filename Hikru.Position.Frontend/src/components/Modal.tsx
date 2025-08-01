@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface ModalProps {
   title: string;
@@ -14,21 +14,36 @@ const Modal: React.FC<ModalProps> = ({
   children,
   onClose,
   onConfirm,
-  confirmText = "Confirmar",
-  cancelText = "Cancelar"
+  confirmText = "Confirm",
+  cancelText = "Cancel"
 }) => {
+  const confirmButtonRef = useRef<HTMLButtonElement>(null);
+  const modalTitleId = 'modal-title';
+  const modalDescId = 'modal-description';
+
+  useEffect(() => {
+    confirmButtonRef.current?.focus();
+  }, []);
+  
   return (
     <div className="modal-overlay">
-      <div className="modal-box">
-        <h2 className="modal-title">{title}</h2>
-        <div className="modal-content">
+      <div className="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={modalTitleId}
+        aria-describedby={modalDescId}>
+        <h2 className="modal-title" id={modalTitleId}>{title}</h2>
+        <div className="modal-content" id={modalDescId}>
           {children}
         </div>
         <div className="modal-actions">
           <button className="modal-cancel" onClick={onClose}>
             {cancelText}
           </button>
-          <button className="modal-confirm" onClick={onConfirm}>
+          <button
+            className="modal-confirm"
+            onClick={onConfirm}
+            ref={confirmButtonRef}>
             {confirmText}
           </button>
         </div>

@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createPosition, getDepartments, getRecruiters } from '../services/api';
+import { getDepartments, getRecruiters } from '../services/api';
 import { PositionStatus, PositionStatusNames } from '../enums/positionStatus';
 import { Recruiter } from '../types/recruiter';
 import { Department } from '../types/department';
 import { CreatePositionDto } from '../types/createPosition';
+import { UpdatePositionDto } from '../types/updatePosition';
+import Modal from './Modal';
 
-const PositionForm: React.FC = () => {
+interface PositionFormProps {
+  initialData: CreatePositionDto | UpdatePositionDto;
+  onSubmit: (data: CreatePositionDto | UpdatePositionDto) => void;
+  isEditMode?: boolean;
+}
+
+const PositionForm: React.FC<PositionFormProps> = ({ initialData, onSubmit, isEditMode = false }) => {
+  const MAX_TITLE_LENGTH = 100;
+  const MAX_DESCRIPTION_LENGTH = 1000;
+
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState<CreatePositionDto>({
-    title: '',
-    description: '',
-    location: '',
-    status: PositionStatus.Draft,
-    recruiterId: '',
-    departmentId: '',
-    budget: 0,
-    closingDate: null,
-  });
-
+  const [formData, setFormData] = useState(initialData);
   const [error, setError] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const [recruiters, setRecruiters] = useState<Recruiter[]>([]);
   const [departments, setDepartments] = useState<Department[]>([]);
+
+  useEffect(() => {
+    setFormData(initialData);
+  }, [initialData]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,37 +58,62 @@ const PositionForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.title || !formData.description || !formData.location) {
+  const handleSubmitRequest = async () => {
+    if (!formData.title || !formData.description || !formData.location || !formData.recruiterId || !formData.departmentId || formData.budget <= 0) {
       setError('Please fill in all required fields.');
       return;
     }
 
+    if (formData.title.length > MAX_TITLE_LENGTH) {
+      setError(`Title must be ${MAX_TITLE_LENGTH} characters or less.`);
+      return;
+    }
+
+    if (formData.description.length > MAX_DESCRIPTION_LENGTH) {
+      setError(`Description must be ${MAX_DESCRIPTION_LENGTH} characters or less.`);
+      return;
+    }
+
+    setError('');
+    setShowModal(true);
+  }
+
+  const handleSubmit = async () => {
     try {
-      await createPosition(formData);
-      alert('Position created successfully');
+      await onSubmit(formData);
+      alert(isEditMode ? 'Position updated successfully' : 'Position created successfully');
       navigate('/');
     } catch (err) {
-      console.error("Error creating position:", err);
-      setError("Failed to create position. Please try again.");
+      console.error("Error submitting position:", err);
+      setError("Failed to process the request. Please try again.");
+    } finally {
+      setShowModal(false);
     }
   };
 
   return (
     <div className="position-form-container">
-      <h2>New Position</h2>
+      <h2>{isEditMode ? 'Edit Position' : 'New Position'}</h2>
       {error && <p className="form-error">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="position-form">
+      <form className="position-form">
         <label>
           Title<span>*</span>
-          <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+          <input type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+            maxLength={MAX_TITLE_LENGTH} />
         </label>
 
         <label>
           Description<span>*</span>
-          <textarea name="description" value={formData.description} onChange={handleChange} required />
+          <textarea name="description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+            maxLength={MAX_DESCRIPTION_LENGTH} />
         </label>
 
         <label>
@@ -124,7 +155,7 @@ const PositionForm: React.FC = () => {
         </label>
 
         <label>
-          Budget
+          Budget<span>*</span>
           <input type="number" name="budget" value={formData.budget} onChange={handleChange} />
         </label>
 
@@ -139,10 +170,26 @@ const PositionForm: React.FC = () => {
         </label>
 
         <div className="form-actions">
-          <button type="submit" className="submit-button">Create</button>
+          <button type="button" className="submit-button" onClick={handleSubmitRequest}>
+            {isEditMode ? 'Save' : 'Create'}
+          </button>
           <button type="button" className="cancel-button" onClick={() => navigate('/')}>Cancel</button>
         </div>
       </form>
+
+      {showModal && (
+        <Modal
+          title={isEditMode ? 'Confirm Update' : 'Confirm Creation'}
+          onClose={() => setShowModal(false)}
+          onConfirm={handleSubmit}
+          confirmText={isEditMode ? 'Save' : 'Create'}
+          cancelText="Cancel"
+        >
+          <p>{isEditMode
+            ? 'Are you sure you want to update this position?'
+            : 'Are you sure you want to create this position? This action cannot be undone.'}</p>
+        </Modal>
+      )}
     </div>
   );
 };
